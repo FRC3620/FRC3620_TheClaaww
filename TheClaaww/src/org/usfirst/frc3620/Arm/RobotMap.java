@@ -11,6 +11,7 @@
 
 package org.usfirst.frc3620.Arm;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -31,7 +32,7 @@ public class RobotMap {
 	public static SpeedController elbowMotor;
 	public static SpeedController twisterActuator;
 	public static Servo wristServo;
-	
+	public static DoubleSolenoid Grip; 
 	
 
     public static void init() {
@@ -46,5 +47,9 @@ public class RobotMap {
         
         wristServo = new Servo(9);
         LiveWindow.addActuator("armSubsystem", "wristServo", wristServo);
+        
+        Grip = new DoubleSolenoid(0,0,1);
+        LiveWindow.addActuator("armSubsystem", "Gripper", Grip);
+        
     }
 }

@@ -4,6 +4,8 @@ package Subsystems;
 
 import org.usfirst.frc3620.Arm.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,7 +18,8 @@ public class ArmSubsystem extends Subsystem {
 	static SpeedController elbowMotor = RobotMap.elbowMotor;
 	static SpeedController twisterActuator = RobotMap.twisterActuator;
 	public static Servo wristServo = RobotMap.wristServo;
-
+	public static DoubleSolenoid Grip = RobotMap.Grip; 
+	
     public void moveShoulderDown(){
     	shoulderMotor.set(0.35);
     }
@@ -60,6 +63,18 @@ public class ArmSubsystem extends Subsystem {
     
     public void setServo(double position){
     	wristServo.set(position);
+    }
+    
+    public void clamp(){
+    	Grip.set(Value.kForward);
+    }
+    
+    public void unclamp(){
+    	Grip.set(Value.kReverse);
+    }
+    
+    public void deadenClaw(){
+    	Grip.set(Value.kOff);
     }
     
     public void initDefaultCommand() {
