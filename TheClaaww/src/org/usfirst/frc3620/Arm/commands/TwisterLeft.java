@@ -30,12 +30,12 @@ public class TwisterLeft extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.armSubsystem.shoulderStop();
+    	Robot.armSubsystem.twisterStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.armSubsystem.shoulderStop();
+    	Robot.armSubsystem.twisterStop();
     }
 }
