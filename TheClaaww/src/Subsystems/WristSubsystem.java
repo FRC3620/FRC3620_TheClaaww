@@ -21,7 +21,9 @@ public class WristSubsystem extends Subsystem {
     	wristServo.set(position);
     }
     
-
+    public double getServo(){
+    	return wristServo.getPosition();
+    }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

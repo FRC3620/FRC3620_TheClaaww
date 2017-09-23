@@ -38,8 +38,8 @@ public class Robot extends IterativeRobot {
     Command moveShoulderUp;
     Command twisterLeft;
     Command twisterRight;
-    Command moveWristUp;
-    Command moveWristDown;
+    Command rotateWristUp;
+    Command rotateWristDown;
     public static ArmSubsystem armSubsystem;
     public static WristSubsystem wristSubsystem;
     
