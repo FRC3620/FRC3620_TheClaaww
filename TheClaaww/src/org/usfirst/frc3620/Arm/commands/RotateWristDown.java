@@ -34,7 +34,7 @@ public class RotateWristDown extends Command {
     	
     	
     	
-    	moveValue = timer.get()*(.3)*(100000);
+    	moveValue = timer.get()*(.05)*(1000);
     
     	System.out.println();
     	 
@@ -43,14 +43,14 @@ public class RotateWristDown extends Command {
     			
     	
     	
-    	/*if (position>=.2){
+    	if (position>=.2){
     		Robot.wristSubsystem.setServo(position);
     		limit = false;
     		}
     	else {
     		limit = true;
+    	
     	}
-*/
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

@@ -65,8 +65,7 @@ public class OI {
     	moveWristUp.whileHeld(new RotateWristUp());
     	moveWristDown = new JoystickButton(drive, 8);
     	moveWristDown.whileHeld(new RotateWristDown());
-    	
-
+   
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
