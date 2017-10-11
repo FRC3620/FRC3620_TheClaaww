@@ -21,7 +21,8 @@ public class TwisterLeft extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.armSubsystem.moveTorsoleft();
-    }
+    	System.out.println("works");
+    	}
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
