@@ -20,6 +20,15 @@ public class ArmSubsystem extends Subsystem {
 	static SpeedController shoulderMotor = RobotMap.shoulderMotor;
 	static SpeedController elbowMotor = RobotMap.elbowMotor;
 	static SpeedController twisterActuator = RobotMap.twisterActuator;
+	
+	//Two doubles giving the length of the elbow piece and the shoulder piece, respectively.
+	public double lengthE = (Double) null;
+	public double lengthS = (Double) null;
+	
+	// Two doubles representing the measure of the elbow joint angle and that of the shoulder joint.
+	static double mE = (Double) null;
+	static double mS = (Double) null;
+	
 	Timer timer = new Timer();
 	
 	public static DoubleSolenoid Grip = RobotMap.Grip; 
@@ -77,6 +86,45 @@ public class ArmSubsystem extends Subsystem {
     	Grip.set(Value.kOff);
     }
     
+    public double r(){
+    	return Math.sqrt((lengthE*lengthE)+(lengthS*lengthS)+(2*lengthE*lengthS*Math.cos(mE))); 
+    }
+    
+    public double gripperX(){
+    	return Math.sin(90 - mS + Math.asin((lengthE*Math.sin(mE))/r()));
+    }
+    
+    public double gripperY(){
+    	return Math.sin(mS - Math.asin((lengthE*Math.sin(mE))/r()));
+    }
+    
+    public double dXe(){
+    	return ((Math.cos(90 - mS + Math.asin((lengthE*Math.sin(mE))/r())))*((lengthE*Math.cos(mE)*(((r()*r())+(2*lengthE*lengthS))/r()))
+    			/Math.sqrt(1-Math.pow(((lengthE*Math.sin(mE))/r()),2)))*r())+ Math.sin(90 - mS + Math.asin((lengthE*Math.sin(mE))/r()))*r();
+    }
+    
+    public double dXs(){
+    	return ((Math.cos(90 - mS + Math.asin((lengthE*Math.sin(mE))/r())))*(-1)*r());
+    }
+    
+    public double dYe(){
+    	return ((Math.cos(90 - mS + Math.asin((lengthE*Math.sin(mE))/r())))*(-(lengthE*Math.cos(mE)*(((r()*r())+(2*lengthE*lengthS))/r()))
+    			/Math.sqrt(1-Math.pow(((lengthE*Math.sin(mE))/r()),2)))*r())+ Math.sin(90 - mS + Math.asin((lengthE*Math.sin(mE))/r()))*r();
+    }
+    
+    public double dYs(){
+    	return ((Math.cos(90 - mS + Math.asin((lengthE*Math.sin(mE))/r())))*r());
+    }
+    //When applied to the desired "motor speed"(given as a voltage) for the shoulder, this is the Kinherent.
+    public double ratioXeToXs(){
+    	return (dXe())/(dXs());
+    }
+    //Ditto
+    public double ratioYeToYs(){
+    	return (dYe())/(dYs());
+	}
+    
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
