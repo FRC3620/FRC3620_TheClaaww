@@ -45,7 +45,7 @@ public class ArmSubsystem extends Subsystem {
     }
     
     public void moveElbowUp(){
-    	elbowMotor.set(-0.35);
+    	elbowMotor.set(-0.75);
     
     }
     
