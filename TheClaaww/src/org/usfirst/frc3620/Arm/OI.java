@@ -52,9 +52,9 @@ public class OI {
     	moveEDown.whileHeld(new MoveElbowDown());
     	moveEUp = new JoystickButton(drive, 2);
     	moveEUp.whileHeld(new MoveElbowUp());
-    	moveTLeft = new JoystickButton(drive, 6);
+    	moveTLeft = new JoystickButton(drive, 5);
     	moveTLeft.whileHeld(new TwisterLeft());
-    	moveTRight = new JoystickButton(drive, 5);
+    	moveTRight = new JoystickButton(drive, 6);
     	moveTRight.whileHeld(new TwisterRight());
     	toggleClamp = new JoystickButton(drive, 9);
     	
